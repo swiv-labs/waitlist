@@ -42,7 +42,7 @@ export default function Home() {
             {/* Subtitle with highlighted web3 */}
             <h2 className="text-4xl sm:text-5xl lg:text-6xl font-light leading-tight tracking-tight">
               the Manage{" "}
-              <span className="bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">
+              <span className="bg-linear-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">
                 web3
               </span>{" "}
               Relationships
@@ -122,9 +122,6 @@ export default function Home() {
           </a>
         </div>
       </div>
-    </div>
-  );
-}
     </div>
   );
 }
