@@ -1,7 +1,11 @@
 "use client";
 
 import { useState, FormEvent } from "react";
-import { ArrowRight, Twitter, Github } from "lucide-react";
+import {
+  ArrowRightIcon,
+  XMarkIcon as TwitterIcon,
+  PencilSquareIcon as MediumIcon,
+} from "@heroicons/react/24/outline";
 
 export default function Home() {
   const [fullName, setFullName] = useState("");
@@ -80,7 +84,7 @@ export default function Home() {
               className="w-full px-4 sm:px-5 py-3 sm:py-4 bg-gray-900 hover:bg-gray-800 border border-gray-700 hover:border-gray-600 rounded-lg text-white font-medium transition-all duration-200 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base group"
             >
               <span>Join the waitlist</span>
-              <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform duration-200" />
+              <ArrowRightIcon className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform duration-200" />
             </button>
           </form>
         </div>
@@ -93,7 +97,7 @@ export default function Home() {
             rel="noopener noreferrer"
             className="flex flex-col items-center gap-2 group cursor-pointer"
           >
-            <Twitter className="w-6 h-6 sm:w-7 sm:h-7 text-gray-400 group-hover:text-white transition-colors duration-200" />
+            <TwitterIcon className="w-6 h-6 sm:w-7 sm:h-7 text-gray-400 group-hover:text-white transition-colors duration-200" />
             <span className="text-xs sm:text-sm text-gray-400 group-hover:text-white transition-colors duration-200">
               Twitter
             </span>
@@ -108,7 +112,7 @@ export default function Home() {
             rel="noopener noreferrer"
             className="flex flex-col items-center gap-2 group cursor-pointer"
           >
-            <Github className="w-6 h-6 sm:w-7 sm:h-7 text-gray-400 group-hover:text-white transition-colors duration-200" />
+            <MediumIcon className="w-6 h-6 sm:w-7 sm:h-7 text-gray-400 group-hover:text-white transition-colors duration-200" />
             <span className="text-xs sm:text-sm text-gray-400 group-hover:text-white transition-colors duration-200">
               Medium
             </span>
@@ -121,18 +125,6 @@ export default function Home() {
     </div>
   );
 }
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
     </div>
   );
 }
