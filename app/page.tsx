@@ -49,10 +49,10 @@ export default function Home() {
               About
             </Link>
             <Link href="#" className="hover:text-white transition">
-              Docs
+              Docs(soon)
             </Link>
             <Link href="#" className="hover:text-white transition">
-              Roadmap
+              Roadmap(soon)
             </Link>
           </div>
 
@@ -67,9 +67,9 @@ export default function Home() {
       <div className="relative z-10 flex min-h-screen flex-col items-center justify-center px-6 py-44 text-center">
 
         {/* Main Heading with Animated Carousel */}
-        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-light leading-10 text-gray-100 max-w-5xl">
-          Predict Privately on
-          <div className="relative h-20 sm:h-24 lg:h-28 flex items-center justify-center mt-2">
+        <h1 className="text-4xl md:text-6xl font-light leading-normal md:leading-20 text-gray-100 max-w-5xl">
+          Trade your Predictions on
+          <div className="relative h-10 md:h-20 flex items-center justify-center mt-2">
             <AnimatedCarousel />
           </div>
         </h1>
@@ -77,7 +77,7 @@ export default function Home() {
         {/* Subtext */}
         <p className="mt-6 text-gray-400 max-w-2xl text-base sm:text-lg">
           Precision-based prediction market with private execution powered by MagicBlock.
-          Settle on Solana with zero exposure to front-running.
+          Make numerical forecasts on real word outcomes like crypto, politics e.t.c
         </p>
 
         {/* Form */}
@@ -123,8 +123,8 @@ export default function Home() {
         </form>
 
         {/* Social */}
-        <div className="mt-12 flex items-center gap-4 px-6 py-4 rounded-xl border border-gray-800/50 bg-white/5 backdrop-blur-sm hover:bg-white/10 hover:border-[#8b5cf6]/50 transition">
-          <span className="text-gray-400 text-sm">Follow on X</span>
+        <div className="mt-12 flex flex-col items-center gap-4 px-6 py-4 rounded-xl  transition">
+          <span className="text-gray-400 text-sm">Follow us on X for more updates</span>
           <a
             href="https://x.com/swiv0fficial"
             target="_blank"
@@ -156,13 +156,12 @@ function AnimatedCarousel() {
       {items.map((item, index) => (
         <div
           key={index}
-          className={`absolute text-[#8b5cf6] font-light text-4xl sm:text-5xl lg:text-6xl transition-all duration-500 ${
-            index === current
-              ? "opacity-100 translate-y-0"
-              : index === (current - 1 + items.length) % items.length
+          className={`absolute text-[#8b5cf6] font-light text-4xl sm:text-5xl lg:text-6xl transition-all duration-500 ${index === current
+            ? "opacity-100 translate-y-0"
+            : index === (current - 1 + items.length) % items.length
               ? "opacity-0 translate-y-16"
               : "opacity-0 -translate-y-16"
-          }`}
+            }`}
         >
           {item}
         </div>
