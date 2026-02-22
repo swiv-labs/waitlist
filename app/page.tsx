@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, FormEvent, useEffect } from "react";
+import { useState, SubmitEvent, useEffect } from "react";
 import {
   ArrowRightIcon,
   UserIcon,
@@ -18,14 +18,14 @@ export default function Home() {
   const [successMessage, setSuccessMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
     setSuccessMessage("");
     setErrorMessage("");
 
     try {
-      const apiUrl = process.env.NEXT_PUBLIC_API_URL || "https://api2.swiv.xyz";
+      const apiUrl = process.env.NEXT_PUBLIC_API_BASE_URL || "https://api2.swiv.xyz";
       const response = await fetch(`${apiUrl}/api/waitlist/join`, {
         method: "POST",
         headers: {
@@ -112,7 +112,7 @@ export default function Home() {
         </h1>
 
         {/* Subtext */}
-        <p className="mt-6 text-gray-400 max-w-2xl text-base sm:text-lg">
+        <p className="mt-8 text-gray-400 max-w-2xl text-base sm:text-lg">
           Precision-based prediction market with private execution powered by MagicBlock.
           Make numerical forecasts on real word outcomes like crypto, politics e.t.c
         </p>
