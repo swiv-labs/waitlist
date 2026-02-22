@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, FormEvent } from "react";
+import { useState, FormEvent, useEffect } from "react";
 import {
   ArrowRightIcon,
   UserIcon,
@@ -30,7 +30,7 @@ export default function Home() {
   return (
     <div className="relative min-h-screen bg-[#05070d] text-white overflow-hidden">
       {/* Grid Background */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:60px_60px]" />
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-size-[60px_60px]" />
 
       {/* Radial Glow */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(99,102,241,0.15),transparent_70%)]" />
@@ -64,20 +64,20 @@ export default function Home() {
       </header>
 
       {/* ================= HERO ================= */}
-      <div className="relative z-10 flex min-h-screen flex-col items-center justify-center px-6 py-40 text-center">
+      <div className="relative z-10 flex min-h-screen flex-col items-center justify-center px-6 py-44 text-center">
 
-        {/* Main Heading */}
-        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-light leading-tight text-gray-100 max-w-3xl">
-          Privacy-First Predictions on
-          <span className="block text-[#8b5cf6]">
-            Crypto, Politics & Real-World Events
-          </span>
+        {/* Main Heading with Animated Carousel */}
+        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-light leading-10 text-gray-100 max-w-5xl">
+          Predict Privately on
+          <div className="relative h-20 sm:h-24 lg:h-28 flex items-center justify-center mt-2">
+            <AnimatedCarousel />
+          </div>
         </h1>
 
         {/* Subtext */}
-        <p className="mt-6 text-gray-400 max-w-2xl text-sm sm:text-base leading-relaxed">
-          Swiv is a precision-based prediction market that lets you forecast numerical outcomes on real-world events.
-          Powered by <span className="text-gray-300">MagicBlock Ephemeral Rollups</span>, your bets execute privately—preventing front-running and strategy leakage—while settlement results publish on <span className="text-gray-300">Solana</span> for transparency and trustless reward distribution.
+        <p className="mt-6 text-gray-400 max-w-2xl text-base sm:text-lg">
+          Precision-based prediction market with private execution powered by MagicBlock.
+          Settle on Solana with zero exposure to front-running.
         </p>
 
         {/* Form */}
@@ -123,18 +123,50 @@ export default function Home() {
         </form>
 
         {/* Social */}
-        <div className="flex items-center gap-3 mt-10 text-gray-400">
+        <div className="mt-12 flex items-center gap-4 px-6 py-4 rounded-xl border border-gray-800/50 bg-white/5 backdrop-blur-sm hover:bg-white/10 hover:border-[#8b5cf6]/50 transition">
+          <span className="text-gray-400 text-sm">Follow on X</span>
           <a
             href="https://x.com/swiv0fficial"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 hover:text-white transition"
+            className="flex items-center gap-2 text-[#8b5cf6] hover:text-white transition group"
           >
-            <FaXTwitter className="w-5 h-5" />
-            <span className="text-sm">@swiv0fficial</span>
+            <span className="font-medium">@swiv0fficial</span>
+            <FaXTwitter className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </a>
         </div>
       </div>
+    </div>
+  );
+}
+
+function AnimatedCarousel() {
+  const [current, setCurrent] = useState(0);
+  const items = ["Crypto Prices", "Stock Prices", "Political Events", "Real-World Events"];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % items.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <div className="relative w-full h-full flex items-center justify-center">
+      {items.map((item, index) => (
+        <div
+          key={index}
+          className={`absolute text-[#8b5cf6] font-light text-4xl sm:text-5xl lg:text-6xl transition-all duration-500 ${
+            index === current
+              ? "opacity-100 translate-y-0"
+              : index === (current - 1 + items.length) % items.length
+              ? "opacity-0 translate-y-16"
+              : "opacity-0 -translate-y-16"
+          }`}
+        >
+          {item}
+        </div>
+      ))}
     </div>
   );
 }
