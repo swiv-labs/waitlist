@@ -3,122 +3,108 @@
 import { useState, FormEvent } from "react";
 import {
   ArrowRightIcon,
-  XMarkIcon as TwitterIcon,
-  PencilSquareIcon as MediumIcon,
+  UserIcon,
+  EnvelopeIcon,
 } from "@heroicons/react/24/outline";
+import { FaXTwitter } from "react-icons/fa6";
 
 export default function Home() {
-  const [fullName, setFullName] = useState("");
+  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
-    // TODO: Implement actual submission logic
+
     setTimeout(() => {
       setIsSubmitting(false);
-      setFullName("");
+      setUsername("");
       setEmail("");
     }, 1000);
   };
 
   return (
-    <div className="min-h-screen bg-black text-white font-inter">
-      {/* Main Container */}
-      <div className="flex flex-col items-center justify-center min-h-screen px-4 py-12 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="text-center mb-12 sm:mb-16">
-          <p className="text-xs sm:text-sm text-gray-400 tracking-wider mb-8 sm:mb-12">
-            Qy9 App | End-to-end CRM
-          </p>
+    <div className="relative min-h-screen bg-[#05070d] text-white overflow-hidden">
+      {/* Subtle Grid Background */}
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:60px_60px]" />
 
-          {/* Main Heading */}
-          <div className="mb-8 sm:mb-10">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-light leading-tight tracking-tight mb-4 sm:mb-6">
-              Join the waitlist for
-            </h1>
+      {/* Soft radial glow */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(88,101,242,0.15),transparent_70%)]" />
 
-            {/* Subtitle with highlighted web3 */}
-            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-light leading-tight tracking-tight">
-              the Manage{" "}
-              <span className="bg-linear-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">
-                web3
-              </span>{" "}
-              Relationships
-            </h2>
+      <div className="relative z-10 flex min-h-screen flex-col items-center justify-center px-6">
+        {/* Top Label */}
+        <p className="text-xs tracking-widest text-gray-400 mb-16">
+          Qy9 App | End-to-end CRM
+        </p>
+
+        {/* Heading */}
+        <div className="text-center space-y-2 mb-14">
+          <h1 className="text-4xl sm:text-5xl font-light text-gray-200">
+            Join the waitlist for
+          </h1>
+
+          <h2 className="text-4xl sm:text-5xl font-light text-gray-200">
+            the Manage{" "}
+            <span className="text-[#8b5cf6]">
+              web3
+            </span>{" "}
+            Relationships
+          </h2>
+        </div>
+
+        {/* Form */}
+        <form
+          onSubmit={handleSubmit}
+          className="w-full max-w-md space-y-5 mb-20"
+        >
+          {/* X Username Input */}
+          <div className="relative">
+            <UserIcon className="w-5 h-5 text-gray-500 absolute left-4 top-1/2 -translate-y-1/2" />
+            <input
+              type="text"
+              placeholder="X username..."
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              required
+              className="w-full h-12 pl-12 pr-4 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm text-sm text-gray-200 placeholder-gray-500 focus:outline-none focus:border-indigo-400/40 focus:bg-white/10 transition"
+            />
           </div>
-        </div>
 
-        {/* Form Section */}
-        <div className="w-full max-w-md mb-12 sm:mb-16">
-          <form onSubmit={handleSubmit} className="flex flex-col gap-4 sm:gap-5">
-            {/* Full Name Input */}
-            <div>
-              <input
-                type="text"
-                placeholder="Full name..."
-                value={fullName}
-                onChange={(e) => setFullName(e.target.value)}
-                required
-                className="w-full px-4 sm:px-5 py-3 sm:py-4 bg-transparent border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-gray-400 transition-colors duration-200 text-sm sm:text-base"
-              />
-            </div>
+          {/* Email Input */}
+          <div className="relative">
+            <EnvelopeIcon className="w-5 h-5 text-gray-500 absolute left-4 top-1/2 -translate-y-1/2" />
+            <input
+              type="email"
+              placeholder="Email address..."
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              className="w-full h-12 pl-12 pr-4 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm text-sm text-gray-200 placeholder-gray-500 focus:outline-none focus:border-indigo-400/40 focus:bg-white/10 transition"
+            />
+          </div>
 
-            {/* Email Input */}
-            <div>
-              <input
-                type="email"
-                placeholder="Address email..."
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                className="w-full px-4 sm:px-5 py-3 sm:py-4 bg-transparent border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-gray-400 transition-colors duration-200 text-sm sm:text-base"
-              />
-            </div>
+          {/* Button */}
+          <button
+            type="submit"
+            disabled={isSubmitting}
+            className="w-full h-12 rounded-xl bg-[#8b5cf6] hover:bg-[#7c3aed] transition flex items-center justify-center gap-2 text-sm font-medium disabled:opacity-50"
+          >
+            Join the waitlist
+            <ArrowRightIcon className="w-4 h-4" />
+          </button>
+        </form>
 
-            {/* Submit Button */}
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className="w-full px-4 sm:px-5 py-3 sm:py-4 bg-gray-900 hover:bg-gray-800 border border-gray-700 hover:border-gray-600 rounded-lg text-white font-medium transition-all duration-200 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base group"
-            >
-              <span>Join the waitlist</span>
-              <ArrowRightIcon className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform duration-200" />
-            </button>
-          </form>
-        </div>
-
-        {/* Footer Social Links */}
-        <div className="flex items-center gap-8 sm:gap-10">
+        {/* Social */}
+        <div className="flex items-center gap-3">
           <a
-            href="https://twitter.com"
+            href="https://x.com/swiv0fficial"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex flex-col items-center gap-2 group cursor-pointer"
+            className="flex items-center gap-2 text-gray-400 hover:text-white transition"
           >
-            <TwitterIcon className="w-6 h-6 sm:w-7 sm:h-7 text-gray-400 group-hover:text-white transition-colors duration-200" />
-            <span className="text-xs sm:text-sm text-gray-400 group-hover:text-white transition-colors duration-200">
-              Twitter
-            </span>
-            <span className="text-xs text-gray-600 group-hover:text-gray-400 transition-colors duration-200">
-              @ciphercast
-            </span>
-          </a>
-
-          <a
-            href="https://medium.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex flex-col items-center gap-2 group cursor-pointer"
-          >
-            <MediumIcon className="w-6 h-6 sm:w-7 sm:h-7 text-gray-400 group-hover:text-white transition-colors duration-200" />
-            <span className="text-xs sm:text-sm text-gray-400 group-hover:text-white transition-colors duration-200">
-              Medium
-            </span>
-            <span className="text-xs text-gray-600 group-hover:text-gray-400 transition-colors duration-200">
-              @ciphercast
-            </span>
+            <FaXTwitter className="w-5 h-5" />
+            <span className="text-sm">@swiv0fficial</span>
           </a>
         </div>
       </div>
