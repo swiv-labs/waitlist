@@ -1,16 +1,16 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Roboto_Mono } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({
+const inter = Roboto_Mono({
   variable: "--font-inter",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
-  title: "Qy9 App - End-to-end CRM",
-  description: "Join the waitlist for the Manage web3 Relationships",
+  title: "Swiv - Privacy-First Prediction Market",
+  description: "Make private, precision-based predictions on crypto, politics, and real-world outcomes with MagicBlock Ephemeral Rollups on Solana.",
 };
 
 export default function RootLayout({
