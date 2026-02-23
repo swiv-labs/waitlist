@@ -239,7 +239,7 @@ interface SuccessShareModalProps {
 function SuccessShareModal({ isOpen, onClose }: SuccessShareModalProps) {
   if (!isOpen) return null;
 
-  const shareText = "Just applied for @SwivOfficial early access, the privacy-first prediction market to make precision-based forecasts on crypto, politics & real-world events. Join the waitlist: https://swiv.xyz ";
+  const shareText = "Just applied for @SwivOfficial early access, the privacy-first prediction market to make precision-based forecasts on crypto, politics & real-world events. \n \n Join the waitlist: https://swiv.xyz ";
   const xShareUrl = `https://x.com/intent/post?text=${encodeURIComponent(shareText)}`;
 
   return (
