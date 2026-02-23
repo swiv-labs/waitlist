@@ -17,6 +17,7 @@ export default function Home() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
 
   const handleSubmit = async (e: SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -44,6 +45,7 @@ export default function Home() {
       }
 
       setSuccessMessage("🎉 Successfully joined the waitlist! We'll be in touch soon.");
+      setShowSuccessModal(true);
       setUsername("");
       setEmail("");
 
@@ -189,6 +191,12 @@ export default function Home() {
           </a>
         </div>
       </div>
+
+      {/* Success Share Modal */}
+      <SuccessShareModal 
+        isOpen={showSuccessModal} 
+        onClose={() => setShowSuccessModal(false)}
+      />
     </div>
   );
 }
@@ -220,5 +228,90 @@ function AnimatedCarousel() {
         </div>
       ))}
     </div>
+  );
+}
+
+interface SuccessShareModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+function SuccessShareModal({ isOpen, onClose }: SuccessShareModalProps) {
+  if (!isOpen) return null;
+
+  const shareText = "Just applied for @SwivOfficial early access, the privacy-first prediction market to make precision-based forecasts on crypto, politics & real-world events. Join the waitlist: https://swiv.xyz ";
+  const xShareUrl = `https://x.com/intent/post?text=${encodeURIComponent(shareText)}`;
+
+  return (
+    <>
+      {/* Backdrop */}
+      <div
+        className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 transition-opacity duration-300"
+        onClick={onClose}
+      />
+
+      {/* Modal */}
+      <div className="fixed inset-0 z-50 flex items-center justify-center px-4 pointer-events-none">
+        <div className="pointer-events-auto relative w-full max-w-md bg-[#05070d] border border-white/10 rounded-2xl shadow-2xl overflow-hidden animate-modal-in">
+          {/* Gradient Border Effect */}
+          <div className="absolute inset-0 bg-gradient-to-br from-[#8b5cf6]/20 via-transparent to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+
+          {/* Glass Background */}
+          <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent backdrop-blur-xl pointer-events-none" />
+
+          {/* Content */}
+          <div className="relative px-8 py-10 text-center">
+            {/* Success Icon */}
+            <div className="mb-6 flex justify-center">
+              <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#8b5cf6]/30 to-transparent border border-[#8b5cf6]/50 flex items-center justify-center">
+                <div className="text-3xl">✓</div>
+              </div>
+            </div>
+
+            {/* Headline */}
+            <h2 className="text-2xl font-light text-white mb-3">
+              🎉 Successfully joined the waitlist!
+            </h2>
+
+            {/* Message */}
+            <p className="text-sm text-gray-400 mb-8 leading-relaxed">
+              You're now on our exclusive early access waitlist. Share the word and let others know you're joining the revolution in private prediction markets.
+            </p>
+
+            {/* Buttons */}
+            <div className="flex flex-col gap-4">
+              {/* Share on X Button */}
+              <a
+                href={xShareUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-[#8b5cf6] hover:bg-[#7c3aed] transition-all duration-200 text-white font-medium group"
+              >
+                <FaXTwitter className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                <span>Share on X</span>
+              </a>
+
+              {/* Maybe Later Button */}
+              <button
+                onClick={onClose}
+                className="px-6 py-3 rounded-xl border border-white/20 bg-white/5 hover:bg-white/10 transition-all duration-200 text-gray-300 hover:text-white font-medium"
+              >
+                Maybe Later
+              </button>
+            </div>
+
+            {/* Close Icon */}
+            <button
+              onClick={onClose}
+              className="absolute top-4 right-4 text-gray-500 hover:text-white transition-colors"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </>
   );
 }
