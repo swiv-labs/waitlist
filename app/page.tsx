@@ -275,7 +275,7 @@ function SuccessShareModal({ isOpen, onClose }: SuccessShareModalProps) {
 
             {/* Message */}
             <p className="text-sm text-gray-400 mb-8 leading-relaxed">
-              You're now on our exclusive early access waitlist. Share the word and let others know you're joining the revolution in private prediction markets.
+              You're now on our exclusive early access waitlist. Share the word and let others know you're joining the revolution in prediction markets.
             </p>
 
             {/* Buttons */}
