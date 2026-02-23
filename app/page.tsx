@@ -254,16 +254,16 @@ function SuccessShareModal({ isOpen, onClose }: SuccessShareModalProps) {
       <div className="fixed inset-0 z-50 flex items-center justify-center px-4 pointer-events-none">
         <div className="pointer-events-auto relative w-full max-w-md bg-[#05070d] border border-white/10 rounded-2xl shadow-2xl overflow-hidden animate-modal-in">
           {/* Gradient Border Effect */}
-          <div className="absolute inset-0 bg-gradient-to-br from-[#8b5cf6]/20 via-transparent to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+          <div className="absolute inset-0 bg-linear-to-br from-[#8b5cf6]/20 via-transparent to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
           {/* Glass Background */}
-          <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent backdrop-blur-xl pointer-events-none" />
+          <div className="absolute inset-0 bg-linear-to-br from-white/5 to-transparent backdrop-blur-xl pointer-events-none" />
 
           {/* Content */}
           <div className="relative px-8 py-10 text-center">
             {/* Success Icon */}
             <div className="mb-6 flex justify-center">
-              <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#8b5cf6]/30 to-transparent border border-[#8b5cf6]/50 flex items-center justify-center">
+              <div className="w-16 h-16 rounded-full bg-linear-to-br from-[#8b5cf6]/30 to-transparent border border-[#8b5cf6]/50 flex items-center justify-center">
                 <div className="text-3xl">✓</div>
               </div>
             </div>
