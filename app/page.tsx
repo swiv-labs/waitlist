@@ -135,7 +135,7 @@ export default function Home() {
           {errorMessage && (
             <div className="p-4 rounded-xl bg-red-500/10 border border-red-500/30 text-red-400 text-sm animate-fade-in">
               {errorMessage}
-            </div>
+            </div> 
           )}
 
           {/* Username */}
