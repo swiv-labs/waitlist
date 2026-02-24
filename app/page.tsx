@@ -125,7 +125,7 @@ export default function Home() {
           className="w-full max-w-md space-y-5 mt-10"
         >
           {/* Success Message */}
-          {successMessage && (
+          {successMessage && ( 
             <div className="p-4 rounded-xl bg-green-500/10 border border-green-500/30 text-green-400 text-sm animate-fade-in">
               {successMessage}
             </div>
