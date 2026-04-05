@@ -26,7 +26,7 @@ export default function Home() {
     setErrorMessage("");
 
     try {
-      const apiUrl = process.env.NEXT_PUBLIC_API_BASE_URL || "https://api2.swiv.xyz";
+      const apiUrl = process.env.NEXT_PUBLIC_API_BASE_URL || "https://api.swiv.xyz";
       const response = await fetch(`${apiUrl}/api/waitlist/join`, {
         method: "POST",
         headers: {
